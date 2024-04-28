@@ -1,0 +1,25 @@
+.navSection1 {
+    width: 33%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 0 0 10px;
+    text-decoration: none;
+}
+
+.navSection2 {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.navSection3 {
+    width: 33%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 10px 0 0;
+
+}
