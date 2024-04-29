@@ -6,7 +6,7 @@ import styles from './Navbar.module.css';
 function Navbar() {
 
     return (
-        <nav className="navbar navbar-light bg-warning  py-1 ">
+        <nav className="navbar navbar-light bg-warning  py-1 mb-5">
             <div className="container d-flex">
                 <div className={`${styles.navSection1}`}>
                     <Link href={'/'} style={{textDecoration: 'none'}}>
