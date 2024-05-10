@@ -1,13 +1,10 @@
-import LoginBox from "@/UI/LoginBox";
+import LoginSection from "@/components/LoginSection";
 
-export default function Home() {
+export default function FrontPage() {
     return (
-        <>
-            <main className={'d-flex justify-content-between align-items-center'}>
-            <LoginBox/>
+            <main className={''}>
+                <div>This is Landing Page</div>
             </main>
-
-        </>
     )
         ;
 }
