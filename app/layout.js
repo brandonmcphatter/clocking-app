@@ -20,6 +20,14 @@ export default function RootLayout({ children }) {
     <main className={'min-h-svh'} >
     {children}
     </main>
+    <footer className={'w-3/4 mx-auto'}>
+      <hr/>
+      <div className={' flex justify-center mt-4'}>
+        <div>
+          The Clocking Company© | 2024
+        </div>
+      </div>
+    </footer>
     </body>
     </html>
   );
