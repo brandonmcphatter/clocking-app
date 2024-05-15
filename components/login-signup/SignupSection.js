@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function SignupSection() {
     return (
-        <div className="bg-gray-100 flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center h-screen">
             {/*Left Image*/}
             <div className="w-1/2 h-screen hidden lg:block">
                 <Image src={SignupPic}
