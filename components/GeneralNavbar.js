@@ -39,12 +39,14 @@ export default function GeneralNavbar() {
                     <Link href={'/faq'} className="text-sm font-semibold leading-6 text-gray-900">F.A.Q.</Link>
                 </div>
 
-                <Link href={'/login'} className="hidden md:flex md:flex-1 md:justify-end">
-                    <button className="text-sm font-semibold leading-6 text-gray-900">
-                        <span>Log in </span>
-                        <span aria-hidden="true">&rarr;</span>
+                <div className="hidden md:flex md:flex-1 md:justify-end">
+                    <button>
+                        <Link href={'/login'} className="text-sm font-semibold leading-6 text-gray-900">
+                            <span>Log in </span>
+                            <span aria-hidden="true">&rarr;</span>
+                        </Link>
                     </button>
-                </Link>
+                </div>
             </nav>
 
             {/*Mobile Hamburger Links*/}
