@@ -34,9 +34,9 @@ export default function GeneralNavbar() {
 
                 {/*Medium Navbar Links*/}
                 <div className="hidden md:flex md:gap-x-8 lg:gap-x-12">
-                    <Link href={'company'} className="text-sm font-semibold leading-6 text-gray-900">Company</Link>
-                    <Link href={'features'} className="text-sm font-semibold leading-6 text-gray-900">Features</Link>
-                    <Link href={'/faq'} className="text-sm font-semibold leading-6 text-gray-900">F.A.Q.</Link>
+                    <Link href={'company'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Company</Link>
+                    <Link href={'features'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Features</Link>
+                    <Link href={'/faq'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">F.A.Q.</Link>
                 </div>
 
                 <div className="hidden md:flex md:flex-1 md:justify-end">
