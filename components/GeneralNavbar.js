@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import Link from "next/link";
 import 'animate.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClock, faClockFour, faUserClock} from "@fortawesome/free-solid-svg-icons";
+import {faClock} from "@fortawesome/free-solid-svg-icons";
 
 export default function GeneralNavbar() {
 
