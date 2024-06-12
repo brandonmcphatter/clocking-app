@@ -1,145 +1,117 @@
 'use client'
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon, ClockIcon } from '@heroicons/react/24/outline'
+import React, {useState} from 'react'
 import Link from "next/link";
-
-const navigation = [
-    { name: 'Dashboard', href: '/account/dashboard', current: true },
-    { name: 'Timesheet', href: '/account/timesheet', current: false },
-    { name: 'Account', href: '/account', current: false },
-]
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faClock} from "@fortawesome/free-solid-svg-icons";
+import {usePathname} from "next/navigation";
 
 export default function DashboardNavbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const path = usePathname();
+    const inDashboard = '/account/dashboard';
+    const inTimesheet = '/account/timesheet';
+    const inAccount = '/account';
+
     return (
-        <Disclosure as="nav" className="bg-gray-800">
-            {({ open }) => (
+        <>
+            {path.includes(inDashboard || inTimesheet || inAccount) ?
                 <>
-                    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                        <div className="relative flex h-16 items-center justify-between">
-                            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                                {/* Mobile menu button*/}
-                                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                                    <span className="absolute -inset-0.5" />
-                                    <span className="sr-only">Open main menu</span>
-                                    {open ? (
-                                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                                    ) : (
-                                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                                    )}
-                                </Disclosure.Button>
-                            </div>
-                            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="flex flex-shrink-0 items-center">
-                                    <Link href={'/'}>
-                                        <ClockIcon className={'block h-8 w-8 text-white'}/>
-                                    </Link>
-                                </div>
-                                <div className="hidden sm:ml-6 sm:block">
-                                    <div className="flex space-x-4">
-                                        {navigation.map((item) => (
-                                            <Link
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-
-                                {/* Profile dropdown */}
-                                <Menu as="div" className="relative ml-3">
-                                    <div>
-                                        <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                            <span className="absolute -inset-1.5" />
-                                            <span className="sr-only">Open user menu</span>
-                                            <img
-                                                className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                alt=""
-                                            />
-                                        </Menu.Button>
-                                    </div>
-                                    <Transition
-                                        as={Fragment}
-                                        enter="transition ease-out duration-100"
-                                        enterFrom="transform opacity-0 scale-95"
-                                        enterTo="transform opacity-100 scale-100"
-                                        leave="transition ease-in duration-75"
-                                        leaveFrom="transform opacity-100 scale-100"
-                                        leaveTo="transform opacity-0 scale-95"
-                                    >
-                                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Your Profile
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Settings
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                    >
-                                                        Sign out
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                        </Menu.Items>
-                                    </Transition>
-                                </Menu>
-                            </div>
-                        </div>
+                <nav className={"flex items-center justify-between p-4 lg:px-8"} style={{backgroundColor: "#e1dad3"}}>
+                    <div className={"flex md:flex-1"}>
+                        <Link href="/" className={"-m-1.5 p-1.5"}>
+                            {/*<Image className={"h-8 w-auto"} src={clockLogo}*/}
+                            {/*       alt={"logo"}/>*/}
+                            <FontAwesomeIcon icon={faClock} size={'2xl'} color={'gray'} />
+                        </Link>
+                    </div>
+                    {/*Mobile Menu Button*/}
+                    <div className={"flex md:hidden"}>
+                        <button onClick={() => setIsOpen(!isOpen)} type="button"
+                                className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700`}>
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                                 stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                            </svg>
+                        </button>
                     </div>
 
-                    <Disclosure.Panel className="sm:hidden">
-                        <div className="space-y-1 px-2 pb-3 pt-2">
-                            {navigation.map((item) => (
-                                <Disclosure.Button
-                                    key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block rounded-md px-3 py-2 text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
-                                >
-                                    {item.name}
-                                </Disclosure.Button>
-                            ))}
+                    {/*Medium Navbar Links*/}
+                    <div className="hidden md:flex md:gap-x-8 lg:gap-x-12">
+                        <Link href={'account/dashboard'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Dashboard</Link>
+                        <Link href={'account/timesheet'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Timesheet</Link>
+                        <Link href={'/account'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Account</Link>
+                    </div>
+
+                    <div className="hidden md:flex md:flex-1 md:justify-end">
+                        <button>
+                            <Link href={'/login'} className="text-sm font-semibold leading-6 text-gray-900">
+                                <span>Log Out </span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </Link>
+                        </button>
+                    </div>
+                </nav>
+
+
+                <div className={`${isOpen ? 'md:hidden' : 'hidden'} flex items-center flex-col mt-3`}>
+        <Link href={'account/dashboard'}  className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Dashboard</Link>
+        <Link href={'account/timesheet'} className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Timesheet</Link>
+        <Link href={'/account'}      className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Account</Link>
+        <Link href={'/login'}    className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Sign Up / Log In</Link>
+        </div>
+            </> :
+                <>
+                    <nav className={"flex items-center justify-between p-4 lg:px-8"} style={{backgroundColor: "#e1dad3"}}>
+                        <div className={"flex md:flex-1"}>
+                            <Link href="/" className={"-m-1.5 p-1.5"}>
+                                {/*<Image className={"h-8 w-auto"} src={clockLogo}*/}
+                                {/*       alt={"logo"}/>*/}
+                                <FontAwesomeIcon icon={faClock} size={'2xl'} color={'gray'} />
+                            </Link>
                         </div>
-                    </Disclosure.Panel>
+                        {/*Mobile Menu Button*/}
+                        <div className={"flex md:hidden"}>
+                            <button onClick={() => setIsOpen(!isOpen)} type="button"
+                                    className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700`}>
+                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                                     stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/*Medium Navbar Links*/}
+                        <div className="hidden md:flex md:gap-x-8 lg:gap-x-12">
+                            <Link href={'company'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Company</Link>
+                            <Link href={'features'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">Features</Link>
+                            <Link href={'/faq'} className="text-sm font-semibold leading-6 text-gray-900 hover:underline">F.A.Q.</Link>
+                        </div>
+
+                        <div className="hidden md:flex md:flex-1 md:justify-end">
+                            <button>
+                                <Link href={'/login'} className="text-sm font-semibold leading-6 text-gray-900">
+                                    <span>Log in </span>
+                                    <span aria-hidden="true">&rarr;</span>
+                                </Link>
+                            </button>
+                        </div>
+                    </nav>
+
+                    {/*Mobile Hamburger Links*/}
+                    <div className={`${isOpen ? 'md:hidden' : 'hidden'} flex items-center flex-col mt-3`}>
+                        <Link href={'/company'}  className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Company</Link>
+                        <Link href={'/features'} className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Features</Link>
+                        <Link href={'/faq'}      className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">F.A.Q.</Link>
+                        <Link href={'/login'}    className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Sign Up / Log In</Link>
+                    </div>
+
+
                 </>
-            )}
-        </Disclosure>
+            }
+
+
+        </>
     )
 }
