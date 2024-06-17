@@ -1,12 +1,12 @@
 import React from 'react';
 
-function WorkHistoryTableRow({bgColor}) {
+function WorkHistoryTableRow({bgColor, date, timeIn, timeOut, totalHrs}) {
     return (
         <tr className={`${bgColor} h-12`}>
-            <td className={'text-center'}>01/08</td>
-            <td className={'text-center'}>09:00</td>
-            <td className={'text-center'}>17:00</td>
-            <td className={'text-center'}>8.0</td>
+            <td className={'text-center'}>{ date ?  date : '-'}</td>
+            <td className={'text-center'}>{ timeIn ?  timeIn : '-'}</td>
+            <td className={'text-center'}>{ timeOut ?  timeOut : '-'}</td>
+            <td className={'text-center'}>{ totalHrs ?  totalHrs : '-'}</td>
         </tr>
     );
 }
