@@ -17,45 +17,45 @@ export default function WorkSummarySection() {
     )
 }
 
-function GrossWages() {
-    return (
-        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-green-400'} style={{backgroundColor: '#392F5A'}}>
-            <div className={'md:text-3xl text-green-400'}>Gross</div>
-            <div className={'md:text-3xl flex justify-between'}>
-                <div className={'text-green-400'}>Wages:</div>
-                <div className={'md:text-3xl text-end '}>
-                    <span className={'text-green-400'}>$</span>
-                    <span className={'text-white'}>500</span>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function HoursWorked() {
-    return (
-        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-green-400'} style={{backgroundColor: '#392F5A'}}>
-            <div className={'md:text-3xl text-green-400'}>Hours</div>
-            <div className={'md:text-3xl flex justify-between'}>
-                <div className={'text-green-400'}>Worked:</div>
-                <div className={'md:text-3xl text-end '}>
-                    <span className={'text-white'}>56</span>
-                </div>
-            </div>
-        </div>
-    )
-}
-
 function PayPeriod() {
     return (
-        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-green-400'} style={{backgroundColor: '#392F5A'}}>
-            <div className={'md:text-3xl text-green-400'}>Pay</div>
+        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-gray-500 bg-gray-500'} >
+            <div className={'md:text-3xl '}>Pay</div>
             <div className={'md:text-3xl flex justify-between'}>
-                <div className={'text-green-400'}>Period:</div>
+                <div className={''}>Period:</div>
                 <div className={'md:text-3xl text-end '}>
-                    <span className={'text-green-400'}>4/1</span>
+                    <span className={''}>4/1</span>
                     <span>-</span>
-                    <span className={'text-white'}>4/15</span>
+                    <span className={''}>4/15</span>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function HoursWorked({hoursWorked}) {
+    return (
+        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-green-400 bg-gray-500'}>
+            <div className={'md:text-3xl '}>Hours</div>
+            <div className={'md:text-3xl flex justify-between'}>
+                <div className={''}>Worked:</div>
+                <div className={'md:text-3xl text-end '}>
+                    <span className={''}>{hoursWorked ? hoursWorked : 0}</span>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function GrossWages({grossWages}) {
+    return (
+        <div className={'p-2 flex-col content-between md:w-1/3  rounded-lg shadow drop-shadow shadow-green-400 bg-gray-500'}>
+            <div className={'md:text-3xl '}>Gross</div>
+            <div className={'md:text-3xl flex justify-between'}>
+                <div className={''}>Wages:</div>
+                <div className={'md:text-3xl text-end '}>
+                    <span className={''}>$ </span>
+                    <span className={''}>{grossWages ? grossWages : 0}</span>
                 </div>
             </div>
         </div>
