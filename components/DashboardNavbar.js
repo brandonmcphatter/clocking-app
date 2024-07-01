@@ -4,6 +4,7 @@ import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faClock} from "@fortawesome/free-solid-svg-icons";
 import {usePathname} from "next/navigation";
+import useAuth from "@/services/useAuth";
 
 export default function DashboardNavbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,8 @@ export default function DashboardNavbar() {
     const inDashboard = '/account/dashboard';
     const inTimesheet = '/account/timesheet';
     const inAccount = '/account';
+    const user = useAuth();
+
 
     return (
         <>
@@ -92,7 +95,7 @@ export default function DashboardNavbar() {
                         <div className="hidden md:flex md:flex-1 md:justify-end">
                             <button>
                                 <Link href={'/login'} className="text-sm font-semibold leading-6 text-gray-900">
-                                    <span>Log in </span>
+                                    <span>{!user ? 'Log In' : 'Log Out'}</span>
                                     <span aria-hidden="true">&rarr;</span>
                                 </Link>
                             </button>
@@ -100,7 +103,7 @@ export default function DashboardNavbar() {
                     </nav>
 
                     {/*Mobile Hamburger Links*/}
-                    <div className={`${isOpen ? 'md:hidden' : 'hidden'} flex items-center flex-col mt-3`}>
+                    <div className={`${isOpen ? 'md:hidden' : 'hidden'} w-full flex items-center flex-col absolute backdrop-blur`}>
                         <Link href={'/company'}  className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Company</Link>
                         <Link href={'/features'} className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">Features</Link>
                         <Link href={'/faq'}      className="text-sm font-semibold leading-6 text-gray-900 w-1/2 text-center py-1 my-1 rounded bg-gray-400 hover:bg-transparent">F.A.Q.</Link>
